@@ -5,8 +5,8 @@ public class King extends Piece {
   public static final int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
   public static final int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
 
-  public King(Color c, String fn) {
-    super(c, fn, 1000);
+  public King(Pieces pieceName) {
+    super(pieceName, 1000);
   }
 
   public ArrayList<Location> destinations() {

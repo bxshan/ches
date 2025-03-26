@@ -2,8 +2,8 @@ import java.awt.*;
 import java.util.*;
 
 public class Bishop extends Piece {
-  public Bishop(Color c, String fn) {
-    super(c, fn, 3);
+  public Bishop(Pieces pieceName) {
+    super(pieceName, 3);
   }
 
   public ArrayList<Location> destinations() {

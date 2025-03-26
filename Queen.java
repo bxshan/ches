@@ -2,8 +2,8 @@ import java.awt.*;
 import java.util.*;
 
 public class Queen extends Piece {
-  public Queen(Color c, String fn) {
-    super(c, fn, 9);
+  public Queen(Pieces pieceName) {
+    super(pieceName, 9);
   }
 
   public ArrayList<Location> destinations() {

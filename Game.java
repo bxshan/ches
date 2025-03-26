@@ -74,63 +74,63 @@ public class Game {
 
     // KINGS
     for (int i = 0; i < 1; i++) {
-      Piece wk = new King(Color.WHITE, "white_king.gif");
+      Piece wk = new King(Pieces.WHITE_KING);
       wk.putSelfInGrid(b, new Location(backRank, kdy[i]));
 
-      Piece bk = new King(Color.BLACK, "black_king.gif");
+      Piece bk = new King(Pieces.BLACK_KING);
       bk.putSelfInGrid(b, new Location(7-backRank, kdy[i]));
     }
 
     // QUEENS
     for (int i = 0; i < 1; i++) {
-      Piece wq = new Queen(Color.WHITE, "white_queen.gif");
+      Piece wq = new Queen(Pieces.WHITE_QUEEN);
       wq.putSelfInGrid(b, new Location(backRank, qdy[i]));
 
-      Piece bq = new Queen(Color.BLACK, "black_queen.gif");
+      Piece bq = new Queen(Pieces.BLACK_QUEEN);
       bq.putSelfInGrid(b, new Location(7-backRank, qdy[i]));
     }
     
     // ROOKS
     for (int i = 0; i < 2; i++) {
-      Piece wr = new Rook(Color.WHITE, "white_rook.gif");
+      Piece wr = new Rook(Pieces.WHITE_ROOK);
       wr.putSelfInGrid(b, new Location(backRank, rdy[i]));
 
-      Piece br = new Rook(Color.BLACK, "black_rook.gif");
+      Piece br = new Rook(Pieces.BLACK_ROOK);
       br.putSelfInGrid(b, new Location(7-backRank, rdy[i]));
     }
 
     // BISHOPS 
     for (int i = 0; i < 2; i++) {
-      Piece wb = new Bishop(Color.WHITE, "white_bishop.gif");
+      Piece wb = new Bishop(Pieces.WHITE_BISHOP);
       wb.putSelfInGrid(b, new Location(backRank, bdy[i]));
 
-      Piece bb = new Bishop(Color.BLACK, "black_bishop.gif");
+      Piece bb = new Bishop(Pieces.BLACK_BISHOP);
       bb.putSelfInGrid(b, new Location(7-backRank, bdy[i]));
     }
 
     // KNIGHTS
     for (int i = 0; i < 2; i++) {
-      Piece wn = new Knight(Color.WHITE, "white_knight.gif");
+      Piece wn = new Knight(Pieces.WHITE_KNIGHT);
       wn.putSelfInGrid(b, new Location(backRank, ndy[i]));
 
-      Piece bn = new Knight(Color.BLACK, "black_knight.gif");
+      Piece bn = new Knight(Pieces.BLACK_KNIGHT);
       bn.putSelfInGrid(b, new Location(7-backRank, ndy[i]));
     }
 
     // PAWNS 
     for (int i = 0; i < 8; i++) {
-      Piece wp = new Pawn(Color.WHITE, "white_pawn.gif");
+      Piece wp = new Pawn(Pieces.WHITE_PAWN);
       wp.putSelfInGrid(b, new Location(frontRank, pdy[i]));
 
-      Piece bp = new Pawn(Color.BLACK, "black_pawn.gif");
+      Piece bp = new Pawn(Pieces.BLACK_PAWN);
       bp.putSelfInGrid(b, new Location(7-frontRank, pdy[i]));
     }
 
     // DISPLAY
     BoardDisplay d = new BoardDisplay(b);
     
-    wp = new StockfishPlayer(b, "box", Color.WHITE, d, 40);
-    bp = new StockfishPlayer(b, "xob", Color.BLACK, d, 40);
+    wp = new HumanPlayer(b, "box", Color.WHITE, d);
+    bp = new StockfishPlayer(b, "xob", Color.BLACK, d, 25);
     //bp = new StockfishPlayer(b, "xob", Color.BLACK, d, 25);
     // last param of StockfishPlayer constructor the max search depth
     // <30 for performance, >20 for decently smart play

@@ -2,8 +2,8 @@ import java.awt.*;
 import java.util.*;
 
 public class Pawn extends Piece {
-  public Pawn(Color c, String fn) {
-    super(c, fn, 1);
+  public Pawn(Pieces pieceName) {
+    super(pieceName, 1);
   }
 
   @Override

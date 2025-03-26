@@ -53,6 +53,8 @@ public class BoardDisplay implements ActionListener
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new GridLayout(board.getNumRows(), board.getNumCols()));
+        this.frame.setResizable(false);
+        this.frame.setSize(480, 480);
 
 		//Create each square as a button.
         for (int row = 0; row < grid.length; row++)
@@ -126,7 +128,12 @@ public class BoardDisplay implements ActionListener
 				{
 					//System.out.println(loc);
 					grid[row][col].setForeground(piece.getColor());
-					icon = new ImageIcon(piece.getImageFileName());
+          Dimension size = frame.getSize();
+          if (size.height != 0 && size.width != 0) {
+            icon = SpriteManager.getSprite(piece.getPieceName(), size.height/8, size.width/8);
+          } else {
+            icon = SpriteManager.getSprite(piece.getPieceName(), 60, 60);
+          }
 				}
 				grid[row][col].setIcon(icon);
 

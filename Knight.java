@@ -5,8 +5,8 @@ public class Knight extends Piece {
   public static final int dx[] = {-2, -2, -1, -1, 1, 1, 2, 2};
   public static final int dy[] = {1, -1, 2, -2, 2, -2, 1, -1};
 
-  public Knight(Color c, String fn) {
-    super(c, fn, 3);
+  public Knight(Pieces pieceName) {
+    super(pieceName, 3);
   }
 
   public ArrayList<Location> destinations() {

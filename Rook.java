@@ -2,8 +2,8 @@ import java.awt.*;
 import java.util.*;
 
 public class Rook extends Piece {
-  public Rook(Color c, String fn) {
-    super(c, fn, 5);
+  public Rook(Pieces pieceName) {
+    super(pieceName, 5);
   }
 
   public ArrayList<Location> destinations() {

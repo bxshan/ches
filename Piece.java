@@ -12,16 +12,16 @@ public abstract class Piece {
   private Color color;
 
   //the file used to display this piece
-  private String imageFileName;
+  private Pieces pieceName;
 
   //the approximate value of this piece in a game of chess
   private int value;
 
   //constructs a new Piece with the given attributes.
-  public Piece(Color col, String fileName, int val)
+  public Piece(Pieces pieceName, int val)
   {
-    color = col;
-    imageFileName = fileName;
+    color = SpriteManager.getColor(pieceName);
+    this.pieceName = pieceName;
     value = val;
   }
 
@@ -44,9 +44,9 @@ public abstract class Piece {
   }
 
   //returns the name of the file used to display this piece
-  public String getImageFileName()
+  public Pieces getPieceName()
   {
-    return imageFileName;
+    return this.pieceName;
   }
 
   //returns a number representing the relative value of this piece
