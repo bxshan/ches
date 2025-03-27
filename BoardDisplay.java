@@ -63,9 +63,9 @@ public class BoardDisplay implements ActionListener
 				grid[row][col] = new JButton();
 				grid[row][col].setOpaque(true);
 				if ((row + col) % 2 == 0)
-					grid[row][col].setBackground(new Color(155, 145, 115));
+					grid[row][col].setBackground(new Color(240, 236, 212));
 				else
-					grid[row][col].setBackground(new Color(110, 85, 55));
+					grid[row][col].setBackground(new Color(120, 148, 84));
 				grid[row][col].setPreferredSize(new Dimension(50, 50));
 				grid[row][col].setActionCommand(row + "," + col);
 				grid[row][col].addActionListener(this);

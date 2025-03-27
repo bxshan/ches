@@ -22,6 +22,7 @@ public class Game {
 
   private static boolean nextTurn(Board b, BoardDisplay d, Player p, boolean inCheck) {
     if (!(wp instanceof StockfishPlayer || bp instanceof StockfishPlayer)) d.setTitle(p.getName());
+
     Move m = p.nextMove(inCheck);
 
     if (m == null) {
@@ -31,7 +32,43 @@ public class Game {
     }
 
     if(inCheck) d.setTitle("CHECK");
-    b.executeMove(m);
+
+    // promotion
+    if ((p.getColor().equals(Color.WHITE) && m.getPiece() instanceof Pawn && m.getDestination().getRow() == 0) ||
+        (p.getColor().equals(Color.BLACK) && m.getPiece() instanceof Pawn && m.getDestination().getRow() == 7)) {
+      b.get(m.getSource()).removeSelfFromGrid();
+
+      // what to promote to
+      System.out.println("\n\tpromote to");
+      Scanner sc = new Scanner(System.in);
+      String piece = sc.nextLine();
+      sc.close();
+
+      Piece pp;
+
+      switch (piece) {
+        case "n":
+          System.out.println("knight");
+          pp = (p.getColor().equals(Color.WHITE)) ? new Knight(Pieces.WHITE_KNIGHT) : new Knight(Pieces.BLACK_KNIGHT);
+          break;
+        case "b":
+          System.out.println("bishop");
+          pp = (p.getColor().equals(Color.WHITE)) ? new Bishop(Pieces.WHITE_BISHOP) : new Bishop(Pieces.BLACK_BISHOP);
+          break;
+        case "r":
+          System.out.println("rook");
+          pp = (p.getColor().equals(Color.WHITE)) ? new Rook(Pieces.WHITE_ROOK) : new Rook(Pieces.BLACK_ROOK);
+          break;
+        default:
+          System.out.println("default");
+          pp = (p.getColor().equals(Color.WHITE)) ? new Queen(Pieces.WHITE_QUEEN) : new Queen(Pieces.BLACK_QUEEN);
+          break;
+      }
+
+      pp.putSelfInGrid(b, m.getDestination());
+    } else {
+      b.executeMove(m);
+    }
 
     d.clearColors();
 
@@ -130,7 +167,7 @@ public class Game {
     BoardDisplay d = new BoardDisplay(b);
     
     wp = new HumanPlayer(b, "box", Color.WHITE, d);
-    bp = new StockfishPlayer(b, "xob", Color.BLACK, d, 25);
+    bp = new StockfishPlayer(b, "xob", Color.BLACK, d, 1);
     //bp = new StockfishPlayer(b, "xob", Color.BLACK, d, 25);
     // last param of StockfishPlayer constructor the max search depth
     // <30 for performance, >20 for decently smart play
